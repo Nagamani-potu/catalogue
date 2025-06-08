@@ -43,7 +43,7 @@ pipeline {
             steps {
                 sh """
                     echo  "Here I wrote shell script"
-                    echo "$GREETINGS"
+                    #sleep 10
                 """
             }
         }
