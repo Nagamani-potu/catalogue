@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         packageVersion = ''
-        nexusURL = '172.31.22.176' // Removed port from here
+        nexusURL = '172.31.22.176:8081' // ✅ Port included
     }
 
     options {
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh '''
                     ls -la
-                    zip -q -r catalogue.zip ./* -x ".git/*" -x "*.zip"
+                    zip -q -r catalogue.zip ./Jenkinsfile ./node_modules ./package.json ./package-lock.json ./schema ./server.js -x ".git/*" -x "*.zip"
                     ls -ltr
                 '''
             }
