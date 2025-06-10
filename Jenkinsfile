@@ -52,7 +52,7 @@ pipeline {
         stage('Sonar Scan') {
            steps {
                 sh '''
-                   sonar-scanner -Dproject.settings=sonar-project.properties
+                   sonar-scanner 
                 '''
            }
         }      
