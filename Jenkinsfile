@@ -49,13 +49,14 @@ pipeline {
                 """
             }
         }
-        stage('Sonar Scan'){
-            steps{
-                sh """
-                    sonar-scanner
-                """
-            }
-        }
+        stage('Sonar Scan') {
+           steps {
+                sh '''
+                   sonar-scanner -Dproject.settings=sonar-project.properties
+                '''
+           }
+        }      
+
 
         stage('Build') {
             steps {
@@ -94,6 +95,11 @@ pipeline {
         }
 
         stage('Deploy') {
+            when {
+                expression{
+                    params.Deploy == 'true'
+                }
+            }
             steps {
                 script {
                         def params = [
